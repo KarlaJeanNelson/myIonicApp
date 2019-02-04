@@ -20,7 +20,8 @@ const routes: Routes = [
 	},
   { path: 'jobs', loadChildren: './jobs/jobs.module#JobsPageModule' },
   { path: 'tasks', loadChildren: './tasks/tasks.module#TasksPageModule' },
-  { path: 'company-modal', loadChildren: './company-modal/company-modal.module#CompanyModalPageModule' }
+  { path: 'company-modal', loadChildren: './company-modal/company-modal.module#CompanyModalPageModule' },
+  { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' }
 ];
 
 @NgModule({

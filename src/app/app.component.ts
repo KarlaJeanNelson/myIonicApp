@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import { SignupPage } from './signup/signup.page'
+// import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +44,9 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
 		private statusBar: StatusBar,
-		private router: Router
+		private router: Router,
+		private navCtrl: NavController,
+		// private auth: AuthService
   ) {
 		this.initializeApp();
   }
@@ -56,5 +60,9 @@ export class AppComponent {
 
 	getCurrentUrl() {
 		return this.router.url
+	}
+
+	signup() {
+		this.navCtrl.navigateForward('/signup')
 	}
 }

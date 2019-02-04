@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+		<form [formGroup]="form" (ngSubmit)="onSubmit()">
+				<ion-list inset="true" lines="inset" no-padding>
+					<ion-item lines="inset">
+						<ion-icon slot="start" name="at"></ion-icon>
+						<ion-label position="stacked">E-mail address</ion-label>
+						<ion-input
+							autofocus="true"
+							formControlName="email"
+							clearInput
+							inputmode="email"
+							type="email"
+						></ion-input>
+					</ion-item>
+					<ion-item lines="inset">
+						<ion-icon slot="start" name="lock"></ion-icon>
+						<ion-label position="stacked">Password</ion-label>
+						<ion-input
+							formControlName="password"
+							clearInput
+							inputmode="password"
+							type="password"
+						></ion-input>
+					</ion-item>
+					<ion-item lines="none" no-padding>
+						<ion-grid>
+							<ion-row justify-content-center>
+								<ion-col>
+										<ion-button fill="clear" margin-end>
+												<ion-label>Cancel</ion-label>
+											</ion-button>
+											<ion-button type="submit" color="tertiary" no-margin>
+												<ion-icon slot="end" name="send"></ion-icon>
+												<ion-label>Submit</ion-label>
+											</ion-button>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+					</ion-item>
+				</ion-list>
+			</form>
+</ion-content>
+	
