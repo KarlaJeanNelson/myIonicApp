@@ -5,15 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-	<form (ngSubmit)="SubmitCompany(data)">
-		<ion-list inset="true" lines="inset">
+	<form [formGroup]="companyData" (ngSubmit)="onSubmit()">
+		<ion-list inset="true" lines="inset" no-padding>
 			<ion-item lines="inset">
 				<ion-icon slot="start" name="briefcase"></ion-icon>
 				<ion-label position="stacked">Company name</ion-label>
 				<ion-input
 					autofocus
 					autocomplete="on"
-					name="title"
+					formControlName="fullname"
 					clearInput
 					inputmode="latin"
 					required
@@ -24,7 +24,7 @@
 				<ion-icon slot="start" name="globe"></ion-icon>
 				<ion-label position="stacked">Website</ion-label>
 				<ion-input
-					name="website"
+					formControlName="website"
 					clearInput
 					inputmode="url"
 					type="url"
@@ -34,22 +34,32 @@
 				<ion-icon slot="start" name="pin"></ion-icon>
 				<ion-label position="stacked">Location</ion-label>
 				<ion-input
-					name="location"
+					formControlName="location"
 					clearInput
 					inputmode="latin"
 					type="text"
 				></ion-input>
 			</ion-item>
+			<!-- <ion-item lines="none" no-padding>
+				<ion-checkbox slot="start" formControlName="favorite" color="warning"></ion-checkbox>
+				<ion-label slot="start">Favorite</ion-label>
+			</ion-item> -->
 			<ion-item lines="none" no-padding>
-					<ion-button slot="end" fill="clear" margin-end>
-						<ion-label>Cancel</ion-label>
-					</ion-button>
-					<ion-button slot="end" type="submit" color="tertiary" no-margin>
-						<ion-icon slot="end" name="send"></ion-icon>
-						<ion-label>Submit</ion-label>
-					</ion-button>
-				</ion-item>
+				<ion-grid>
+					<ion-row justify-content-center>
+						<ion-col>
+								<ion-button fill="clear" margin-end (click)="onCancel()">
+										<ion-label>Cancel</ion-label>
+									</ion-button>
+									<ion-button type="submit" color="tertiary" no-margin>
+										<ion-icon slot="end" name="send"></ion-icon>
+										<ion-label>Submit</ion-label>
+									</ion-button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+				
+			</ion-item>
 		</ion-list>
-		
 	</form>
 </ion-content>

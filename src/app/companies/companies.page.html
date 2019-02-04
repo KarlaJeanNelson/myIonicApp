@@ -33,8 +33,13 @@
 								<ion-label>{{company.location}}</ion-label>
 							</ion-item>
 							<ion-item lines="none" no-margin>
-								<ion-button slot="end" color="tertiary" margin-end>
-									<ion-icon slot="icon-only" name="create" (click)="presentModal(company.fullname, company)"></ion-icon>
+								<ion-button
+									slot="end"
+									color="tertiary"
+									margin-end
+									(click)="presentModal(company.fullname, company)"
+								>
+									<ion-icon slot="icon-only" name="create" ></ion-icon>
 								</ion-button>
 								<ion-button slot="end" color="danger" no-margin>
 										<ion-icon slot="icon-only" name="trash"></ion-icon>

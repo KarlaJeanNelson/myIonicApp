@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -24,7 +25,8 @@ import { CompanyModalPage } from './company-modal/company-modal.page';
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
   	AngularFirestoreModule,
-    AngularFireAuthModule
+		AngularFireAuthModule,
+		ReactiveFormsModule
   ],
   providers: [
     StatusBar,

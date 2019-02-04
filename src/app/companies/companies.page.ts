@@ -19,10 +19,10 @@ export class CompaniesPage implements OnInit {
 	}
 
 	getCompanies() {
-		this.companies = this.db.collection('companies', ref=>ref.orderBy('fullname')).valueChanges();
+		this.companies = this.db.collection('companies', ref=>ref.orderBy('fullname')).valueChanges()
 	}
 	
-	favoriteCompany(docId, isFavorite){
+	favoriteCompany(docId: string, isFavorite: boolean){
 		this.db.collection('companies').doc(docId).set({favorite: !isFavorite}, {merge: true})
 	}
 
@@ -34,7 +34,28 @@ export class CompaniesPage implements OnInit {
         company: company,
       }
     });
-    return await modal.present();
-  }
+		await modal.present();
+		const { data } = await modal.onDidDismiss();
+		const docId = data.payload.docId;
+		const updates = Object.assign({}, data.payload);
+		delete updates.docId;
+
+		if (data.submit && docId) {
+			this.db.collection('companies').doc(docId).set(data.payload)
+			.then()
+			.catch(error => console.log(error))
+		} else if (data.submit) {
+			this.addNew(updates)
+		}
+	}
+
+	addNew(updates) {
+		let newId = this.db.createId();
+		console.log(newId, updates);
+		
+		this.db.collection('companies').doc(newId).set({docId: newId, ...updates})
+		.then()
+		.catch(error => console.log(error))
+	}
 
 }
