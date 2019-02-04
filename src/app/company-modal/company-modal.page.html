@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{header}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<form (ngSubmit)="SubmitCompany(data)">
+		<ion-list inset="true" lines="inset">
+			<ion-item lines="inset">
+				<ion-icon slot="start" name="briefcase"></ion-icon>
+				<ion-label position="stacked">Company name</ion-label>
+				<ion-input
+					autofocus
+					autocomplete="on"
+					name="title"
+					clearInput
+					inputmode="latin"
+					required
+					type="text"
+				></ion-input>
+			</ion-item>
+			<ion-item lines="inset">
+				<ion-icon slot="start" name="globe"></ion-icon>
+				<ion-label position="stacked">Website</ion-label>
+				<ion-input
+					name="website"
+					clearInput
+					inputmode="url"
+					type="url"
+				></ion-input>
+			</ion-item>
+			<ion-item lines="inset">
+				<ion-icon slot="start" name="pin"></ion-icon>
+				<ion-label position="stacked">Location</ion-label>
+				<ion-input
+					name="location"
+					clearInput
+					inputmode="latin"
+					type="text"
+				></ion-input>
+			</ion-item>
+			<ion-item lines="none" no-padding>
+					<ion-button slot="end" fill="clear" margin-end>
+						<ion-label>Cancel</ion-label>
+					</ion-button>
+					<ion-button slot="end" type="submit" color="tertiary" no-margin>
+						<ion-icon slot="end" name="send"></ion-icon>
+						<ion-label>Submit</ion-label>
+					</ion-button>
+				</ion-item>
+		</ion-list>
+		
+	</form>
+</ion-content>
