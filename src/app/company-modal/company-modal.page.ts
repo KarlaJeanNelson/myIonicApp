@@ -26,7 +26,7 @@ export class CompanyModalPage implements OnInit {
 		console.log(this.company);
 		
 		this.companyData.patchValue({
-			docId: this.company.docId,
+			docId: this.company.docId || '',
 			fullname: this.company.fullname,
 			website: this.company.website || '',
 			location: this.company.location || '',

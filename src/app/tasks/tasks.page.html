@@ -1,44 +1,49 @@
 <ion-content color="secondary" padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col
-				size-xs="12"
-				size-sm="6"
-				size-md="4"
-				size-lg="3"
-			>
-				<ion-card>
-					<ion-card-content no-padding>
-						<ion-item lines="full">
-							<ion-card-title></ion-card-title>
+
+	<ion-list>
+			<ion-reorder-group>
+	
+				<ion-item>
+					<ion-label>
+						Item 1
+					</ion-label>
+					<ion-reorder slot="end"></ion-reorder>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>
+						Item 2 (default ion-reorder slot="start")
+					</ion-label>
+					<ion-reorder slot="start"></ion-reorder>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>
+						Item 3 (custom ion-reorder)
+					</ion-label>
+					<ion-reorder slot="end">
+						<ion-icon name="pizza"></ion-icon>
+					</ion-reorder>
+				</ion-item>
+	
+				<ion-item>
+					<ion-label>
+						Item 4 (custom ion-reorder slot="start")
+					</ion-label>
+					<ion-reorder slot="start">
+						<ion-icon name="pizza"></ion-icon>
+					</ion-reorder>
+				</ion-item>
+	
+				<ion-reorder>
+					<ion-item>
+						<ion-label>
+							Item 5 (the whole item can be dragged)
+						</ion-label>
 						</ion-item>
-						<ion-list no-padding>
-							<ion-item lines="none">
-								<ion-icon margin-end slot="start" name="globe"></ion-icon>
-								<ion-label></ion-label>
-							</ion-item>
-							<ion-item lines="full">
-								<ion-icon margin-end slot="start" name="pin"></ion-icon>
-								<ion-label></ion-label>
-							</ion-item>
-							<ion-item lines="none" no-margin>
-								<ion-button slot="end" color="tertiary" margin-end>
-									<ion-icon slot="icon-only" name="create"></ion-icon>
-								</ion-button>
-								<ion-button slot="end" color="danger" no-margin>
-										<ion-icon slot="icon-only" name="trash"></ion-icon>
-									</ion-button>	
-							</ion-item>
-						</ion-list>
-					</ion-card-content>
-				</ion-card>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
-	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-		<ion-fab-button>
-			<ion-icon name="add"></ion-icon>
-		</ion-fab-button>
-	</ion-fab>
+				</ion-reorder>
+	
+			</ion-reorder-group>
+		</ion-list>
 
 </ion-content>

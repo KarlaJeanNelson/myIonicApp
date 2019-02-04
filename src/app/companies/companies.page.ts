@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { CompanyModalPage } from '../company-modal/company-modal.page'
@@ -12,7 +12,12 @@ import { CompanyModalPage } from '../company-modal/company-modal.page'
 
 export class CompaniesPage implements OnInit {
 	companies: Observable<any>;
-  constructor(private db: AngularFirestore, public modalController: ModalController) {}
+  constructor(
+		private db: AngularFirestore,
+		public modalController: ModalController,
+		public alertController: AlertController,
+		public toastController: ToastController
+	) {}
 	
 	ngOnInit() {
 		this.getCompanies();
@@ -58,4 +63,47 @@ export class CompaniesPage implements OnInit {
 		.catch(error => console.log(error))
 	}
 
+	async deleteDoc(id) {
+		const message = 'Are you sure you want to delete this record?';
+		const buttons = [
+			{
+				text: 'Delete',
+				role: 'delete',
+			},
+			{
+				text: 'Cancel',
+				role: 'cancel'
+			}
+		]
+		const alert = await this.presentAlert('Confirm Delete', message, buttons)
+		// console.log(alert);
+		
+		if (alert === 'delete') {
+			this.db.collection('companies').doc(id).delete()
+			.then(() => this.presentToast('Record deleted!', 'success'))
+			.catch(error => console.log(error))
+		}
+	}
+
+	async presentAlert(header, message, buttons) {
+		const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: buttons
+    });
+
+		await alert.present();
+		const { role } = await alert.onDidDismiss();
+		return role;
+	}
+
+	async presentToast(message, color) {
+    const toast = await this.toastController.create({
+			message: message,
+			color: color,
+			position: 'bottom',
+      duration: 2000
+    });
+		toast.present();
+	}
 }
