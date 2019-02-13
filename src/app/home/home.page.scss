@@ -1,4 +1,15 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-grid, ion-row, ion-col, ion-card {
+	height: 100%;
+}
+
+ion-title {
+	font-size: 64px;
+}
+
+ion-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	opacity: 0.5;
 }

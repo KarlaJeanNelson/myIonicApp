@@ -1,44 +1,23 @@
 import { Component } from '@angular/core';
-
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
-import { SignupPage } from './signup/signup.page'
-// import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+	templateUrl: 'app.component.html',
+	styleUrls: ['./app.component.scss'],
+
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-		},
-		{
-			title: 'Companies',
-			url: '/companies',
-			icon: 'business'
-		},
-		{
-			title: 'Contacts',
-			url: '/contacts',
-			icon: 'contacts'
-		},
-		{
-			title: 'Jobs',
-			url: '/jobs',
-			icon: 'cog'
-		},
-		{
-			title: 'Tasks',
-			url: '/tasks',
-			icon: 'checkbox'
-		}
-  ];
+	public breakpoints = {
+		xs: 0,
+		sm: 576,
+		md: 768,
+		lg: 992,
+		xl: 1200
+	}
 
   constructor(
     private platform: Platform,
@@ -54,15 +33,30 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+			this.splashScreen.hide();
+			this.getWidth();
+			this.getSize();
     });
+	}
+
+	getWidth() {
+		return this.platform.width()
+	}
+
+	getSize() {
+		const width = this.platform.width()
+		return width < 576 ? 'xs'
+		: width < 768 ? 'sm'
+		: width < 992 ? 'md'
+		: width < 1200 ? 'lg'
+		: 'xl'
 	}
 
 	getCurrentUrl() {
 		return this.router.url
 	}
 
-	signup() {
-		this.navCtrl.navigateForward('/signup')
+	goToAuth(path) {
+		this.navCtrl.navigateForward(path)
 	}
 }

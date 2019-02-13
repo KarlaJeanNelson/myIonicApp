@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -15,10 +15,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { CompanyModalPage } from './company-modal/company-modal.page';
-import { SignupPage } from './signup/signup.page'
+import { TopnavComponent } from './topnav/topnav.component'
 
 @NgModule({
-  declarations: [AppComponent, CompanyModalPage],
+  declarations: [AppComponent, CompanyModalPage, TopnavComponent],
   entryComponents: [AppComponent, CompanyModalPage],
   imports: [
     BrowserModule,
@@ -27,7 +27,8 @@ import { SignupPage } from './signup/signup.page'
 		AngularFireModule.initializeApp(environment.firebase),
   	AngularFirestoreModule,
 		AngularFireAuthModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		FormsModule
   ],
   providers: [
     StatusBar,

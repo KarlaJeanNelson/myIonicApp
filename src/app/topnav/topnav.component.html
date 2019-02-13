@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-buttons slot="start" *ngIf="devSize !== 'xs' && devSize !== 'sm'">
+			<ion-segment [value]="getCurrentUrl()">
+				<ion-segment-button *ngFor="let p of appPages"
+					[value]="p.url"
+					[routerLink]="[p.url]"
+					routerDirection="root"
+				>
+					<ion-label>{{p.title}}</ion-label>
+				</ion-segment-button>
+			</ion-segment>
+		</ion-buttons>
+		<ion-buttons slot="end">
+			<ion-button (click)="goToAuth('/')">
+				<ion-label>Log in</ion-label>
+			</ion-button>
+			<ion-button (click)="goToAuth('/')">
+				<ion-label>Sign up</ion-label>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>

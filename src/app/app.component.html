@@ -1,34 +1,8 @@
 <ion-app>
-		<ion-header>
-			<ion-toolbar color="primary">
-				<ion-buttons slot="start">
-						<ion-menu-button></ion-menu-button>
-					<ion-segment [value]="getCurrentUrl()">
-							<ion-segment-button *ngFor="let p of appPages"
-								[value]="p.url"
-								[routerLink]="[p.url]"
-								[routerDirection]="'root'"
-							>
-								<ion-label>{{p.title}}</ion-label>
-							</ion-segment-button>
-						</ion-segment>
-					</ion-buttons>
-					<ion-buttons slot="end">
-						<ion-button>
-							<ion-label>Log in</ion-label>
-						</ion-button>
-						<ion-button (click)="signup()">
-							<ion-label>Sign up</ion-label>
-						</ion-button>
-					</ion-buttons>
-			</ion-toolbar>
-		</ion-header>
-		<ion-content>
-				<ion-router-outlet main></ion-router-outlet>
-		</ion-content>
-		<ion-menu>
+	<app-topnav [devWidth]="getWidth()" [devSize]="getSize()"></app-topnav>
+	<!-- <ion-menu>
 			<ion-header>
-				<ion-toolbar>
+				<ion-toolbar no-padding>
 					<ion-title>Menu</ion-title>
 				</ion-toolbar>
 			</ion-header>
@@ -44,5 +18,8 @@
 					</ion-menu-toggle>
 				</ion-list>
 			</ion-content>
-		</ion-menu>
-</ion-app>
+		</ion-menu> -->
+		<ion-content>
+			<router-outlet main></router-outlet>
+		</ion-content>
+	</ion-app>

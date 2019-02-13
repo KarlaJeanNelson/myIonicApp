@@ -49,9 +49,12 @@ describe('AppComponent', () => {
     await fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
-    expect(menuItems.length).toEqual(2);
+    expect(menuItems.length).toEqual(5);
     expect(menuItems[0].textContent).toContain('Home');
-    expect(menuItems[1].textContent).toContain('Companies');
+		expect(menuItems[1].textContent).toContain('Companies');
+		expect(menuItems[2].textContent).toContain('Contacts');
+		expect(menuItems[3].textContent).toContain('Jobs');
+		expect(menuItems[4].textContent).toContain('Tasks');
   });
 
   it('should have urls', async () => {

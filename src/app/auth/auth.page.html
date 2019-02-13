@@ -1,0 +1,65 @@
+<ion-content padding color="secondary">
+	<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+		<ion-card color="light" no-padding>
+			<ion-card-header color="primary">
+				<ion-grid no-padding>
+					<ion-row>
+						<ion-col>
+							<ion-card-title>{{header}}</ion-card-title>
+						</ion-col>
+						<ion-col>
+							<div text-right>
+								<ion-icon [name]="icon" color="light" size="medium"></ion-icon>
+							</div>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-card-header>
+			<ion-card-content padding margin>
+				<ion-label position="stacked" color="primary">E-mail address</ion-label>
+				<ion-item lines="none" no-padding margin-bottom>
+					<ion-icon slot="start" name="mail" size="small" margin></ion-icon>
+					<ion-input
+						autofocus="true"
+						autocomplete="on"
+						formControlName="email"
+						clearInput
+						inputmode="email"
+						type="email"
+						required
+					></ion-input>
+				</ion-item>
+				<ion-label position="stacked" color="primary">Password</ion-label>
+				<ion-item lines="none" no-padding margin-bottom>
+					<ion-icon slot="start" name="lock" size="small" margin></ion-icon>
+					<ion-input
+						formControlName="password"
+						clearInput
+						inputmode="password"
+						type="password"
+					></ion-input>
+				</ion-item>
+				<div *ngIf="header === 'Sign up'">
+					<ion-label position="stacked" color="primary">Re-enter password</ion-label>
+					<ion-item lines="none" no-padding margin-bottom>
+						<ion-icon slot="start" name="lock" size="small" margin></ion-icon>
+						<ion-input
+							formControlName="password2"
+							clearInput
+							inputmode="password"
+							type="password"
+							minlength="6"
+						></ion-input>
+					</ion-item>
+				</div>
+				<div text-center>
+					<ion-button fill="clear" (click)="onCancel()">Cancel</ion-button>
+					<ion-button color="tertiary" type="submit">
+						<ion-label>Submit</ion-label>
+						<ion-icon slot="end" name="send"></ion-icon>
+					</ion-button>
+				</div>
+			</ion-card-content>
+		</ion-card>
+	</form>
+</ion-content>
