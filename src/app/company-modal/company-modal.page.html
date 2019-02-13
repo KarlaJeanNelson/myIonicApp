@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{header}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+		<form [formGroup]="companyData" (ngSubmit)="onSubmit()">
+				<ion-card color="light" padding>
+				<ion-card-content>
+						<ion-label position="stacked" color="primary">Company name</ion-label>
+						<ion-item lines="none" no-padding>
+							<ion-icon slot="start" name="briefcase" size="small" margin></ion-icon>
+							<ion-input
+								autofocus="true"
+								autocomplete="on"
+								formControlName="fullname"
+								clearInput
+								inputmode="latin"
+								required
+								type="text"
+							></ion-input>
+						</ion-item>
+				</ion-card-content>
+				<ion-card-content>
+					<ion-label position="stacked" color="primary">Website</ion-label>
+					<ion-item lines="none" no-padding>
+						<ion-icon slot="start" name="globe" size="small" margin></ion-icon>
+						<ion-input
+							formControlName="website"
+							clearInput
+							inputmode="url"
+							type="url"
+						></ion-input>
+					</ion-item>
+				</ion-card-content>
+				<ion-card-content>
+					<ion-label position="stacked" color="primary">Location</ion-label>
+					<ion-item lines="none" no-padding>
+						<ion-icon slot="start" name="pin" size="small" margin></ion-icon>
+						<ion-input
+							formControlName="location"
+							clearInput
+							inputmode="latin"
+							type="text"
+						></ion-input>
+					</ion-item>
+				</ion-card-content>
+				<ion-card-content>
+					<div text-center>
+						<ion-button fill="clear" (click)="onCancel()">Cancel</ion-button>
+						<ion-button color="tertiary" type="submit">
+							<ion-label>Submit</ion-label>
+							<ion-icon slot="end" name="send"></ion-icon>
+						</ion-button>
+					</div>
+				</ion-card-content>
+			</ion-card>
+		</form>
+	</ion-content>	

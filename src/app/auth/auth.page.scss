@@ -1,0 +1,16 @@
+ion-item {
+	--border-radius: 4px;
+	--min-height: 32px;
+	--highlight-color-valid: var(--ion-color-success-tint);
+	--highlight-color-valid: var(--ion-color-danger-tint);
+
+}
+
+ion-input {
+	--padding-top: 12px;
+	--padding-bottom: 12px;
+}
+
+ion-card-header ion-icon {
+	font-size: 24px;
+}

@@ -1,0 +1,60 @@
+<ion-content color="secondary" padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col
+				size-xs="12"
+				size-sm="6"
+				size-md="4"
+				size-lg="3"
+				*ngFor="let company of companies | async"
+			>
+				<ion-card>
+					<ion-card-content no-padding>
+						<ion-item lines="full">
+							<ion-card-title>{{company.fullname}}</ion-card-title>
+							<ion-button no-padding
+								slot="end"
+								shape="round"
+								color="warning"
+								fill="clear"
+								(click)="favoriteCompany(company.docId, company.favorite)"
+							>
+								<ion-icon *ngIf="company.favorite" slot="icon-only" name="star"></ion-icon>
+								<ion-icon *ngIf="!company.favorite" slot="icon-only" name="star-outline"></ion-icon>
+							</ion-button>
+						</ion-item>
+						<ion-list no-padding>
+							<ion-item lines="none">
+								<ion-icon margin-end slot="start" name="globe"></ion-icon>
+								<ion-label>{{company.website}}</ion-label>
+							</ion-item>
+							<ion-item lines="full">
+								<ion-icon margin-end slot="start" name="pin"></ion-icon>
+								<ion-label>{{company.location}}</ion-label>
+							</ion-item>
+							<ion-item lines="none" no-margin>
+								<ion-button
+									slot="end"
+									color="tertiary"
+									margin-end
+									(click)="presentModal(company.fullname, company)"
+								>
+									<ion-icon slot="icon-only" name="create" ></ion-icon>
+								</ion-button>
+								<ion-button slot="end" color="danger" no-margin (click)="deleteDoc(company.docId)">
+										<ion-icon slot="icon-only" name="trash"></ion-icon>
+									</ion-button>	
+							</ion-item>
+						</ion-list>
+					</ion-card-content>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button (click)="presentModal('Add Company', {})">
+			<ion-icon name="add"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+</ion-content>
